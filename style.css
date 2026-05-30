@@ -3,15 +3,44 @@
   --bg: #fff1f7;
   --surface: #ffffff;
   --surface-muted: #fff0f6;
+  --surface-strong: #f8f0f8;
   --text: #0f172a;
   --text-muted: #475569;
   --accent: #2563eb;
-  --accent-dark: #1d4ed8;
+  --accent-dark: #1d49d8;
   --accent-soft: #f472b6;
   --border: rgba(148, 163, 184, 0.3);
+  --muted-border: rgba(244, 114, 182, 0.18);
   --shadow: 0 24px 60px rgba(15, 23, 42, 0.11);
   --radius: 24px;
-  font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tag-bg: #ffd6e8;
+  --tag-text: #be185d;
+  --chip-bg: #ffe4f0;
+  --chip-text: #9d174d;
+  --block-bg: #eef6ff;
+  --block-border: rgba(37, 99, 235, 0.12);
+}
+
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --surface: #111827;
+  --surface-muted: #141b2f;
+  --surface-strong: #1f2937;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #60a5fa;
+  --accent-dark: #8095b8;
+  --accent-soft: #f472b6;
+  --border: rgba(148, 163, 184, 0.24);
+  --muted-border: rgba(148, 163, 184, 0.16);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --tag-bg: rgba(96, 165, 250, 0.13);
+  --tag-text: #bfdbfe;
+  --chip-bg: rgba(96, 165, 250, 0.12);
+  --chip-text: #bfdbfe;
+  --block-bg: #111827;
+  --block-border: rgba(96, 165, 250, 0.18);
 }
 
 * {
@@ -26,8 +55,15 @@ body {
   margin: 0;
   min-height: 100%;
   font-family: var(--font-sans);
-  background: linear-gradient(180deg, #ffe9f4 0%, #fff1f7 35%, #fff9fc 100%);
+  background: radial-gradient(circle at top, rgba(37, 99, 235, 0.11), transparent 32%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg) 24%, #f8eef8 100%);
   color: var(--text);
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+[data-theme="dark"] body {
+  background: radial-gradient(circle at top, rgba(96, 165, 250, 0.15), transparent 30%),
+    linear-gradient(180deg, #0b1220 0%, #111827 32%, #111827 100%);
 }
 
 img {
@@ -91,6 +127,36 @@ header {
   margin: 0 0 10px;
   font-size: clamp(2.4rem, 3vw, 3.4rem);
   color: var(--text);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 30;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(131, 133, 139, 0.18);
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 3px;
 }
 
 .profile p {
@@ -216,9 +282,9 @@ header {
 
 .timeline-item {
   padding: 24px 26px;
-  background: #fff6fb;
+  background: var(--surface-muted);
   border-radius: 20px;
-  border: 1px solid rgba(244, 114, 182, 0.18);
+  border: 1px solid var(--muted-border);
   transform: translateY(0);
   animation: fadeInUp 0.9s ease-out both;
 }
@@ -248,12 +314,8 @@ header {
   display: inline-flex;
   padding: 8px 14px;
   border-radius: 999px;
-  background: #ffd6e8;
-  color: #be185d;
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
+  background: var(--tag-bg);
+  color: var(--tag-text);
 .skills-grid {
   display: grid;
   gap: 16px;
@@ -272,13 +334,8 @@ header {
   align-items: center;
   padding: 10px 16px;
   border-radius: 999px;
-  background: #ffe4f0;
-  color: #9d174d;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: transform 0.25s ease, background-color 0.25s ease;
-  animation: floatIn 1s ease-out both;
-}
+  background: var(--chip-bg);
+  color: var(--chip-text);
 
 .skill-chip:hover {
   transform: translateY(-2px) scale(1.02);
@@ -288,11 +345,8 @@ header {
 .skill-block {
   padding: 22px;
   border-radius: 20px;
-  background: #eef6ff;
-  border: 1px solid rgba(37, 99, 235, 0.12);
-}
-
-.skill-block h3 {
+  background: var(--block-bg);
+  border: 1px solid var(--block-border);
   margin: 0 0 10px;
   font-size: 1rem;
   color: var(--text);
