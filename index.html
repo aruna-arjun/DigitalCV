@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <button class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
   <div class="page-wrap">
     <header>
       <div class="hero-grid">
@@ -194,5 +195,35 @@
       Made by <span>Aruna Arjun</span>. Crafted as a modern digital CV for fast review, interviews, and career opportunities.
     </footer>
   </div>
+  <script>
+    (function() {
+      const themeKey = 'preferred-theme';
+      const savedTheme = localStorage.getItem(themeKey);
+      const hour = new Date().getHours();
+      const isNight = hour >= 18 || hour < 6;
+      const initialTheme = savedTheme || (isNight ? 'dark' : 'light');
+      const root = document.documentElement;
+      const toggle = document.querySelector('.theme-toggle');
+
+      const updateToggleText = theme => {
+        if (!toggle) return;
+        toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      };
+
+      const setTheme = theme => {
+        root.dataset.theme = theme;
+        localStorage.setItem(themeKey, theme);
+        updateToggleText(theme);
+      };
+
+      setTheme(initialTheme);
+
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
