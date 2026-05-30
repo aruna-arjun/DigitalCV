@@ -1,0 +1,21 @@
+<svg width="512" height="512" viewBox="120 140 272 272" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eb25a9cb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- AA Monogram -->
+  <g fill="none" stroke="url(#g)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <!-- First A -->
+    <path d="M170 350 L230 150 L290 350"/>
+    <path d="M195 270 H265"/>
+
+    <!-- Second A -->
+    <path d="M250 350 L310 150 L370 350"/>
+    <path d="M275 270 H345"/>
+  </g>
+
+  <!-- Scan line -->
+  <rect x="120" y="245" width="272" height="10" fill="#091b1f" opacity="2"/>
+</svg>
