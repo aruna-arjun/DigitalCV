@@ -308,6 +308,13 @@ header {
   display: inline-flex;
   gap: 6px;
   align-items: center;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.timeline-item p strong {
+  font-weight: 700;
+  color: var(--text);
 }
 
 .tag {
@@ -316,6 +323,8 @@ header {
   border-radius: 999px;
   background: var(--tag-bg);
   color: var(--tag-text);
+}
+
 .skills-grid {
   display: grid;
   gap: 16px;
@@ -336,10 +345,14 @@ header {
   border-radius: 999px;
   background: var(--chip-bg);
   color: var(--chip-text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
 
 .skill-chip:hover {
   transform: translateY(-2px) scale(1.02);
-  background-color: #ffd6e8;
+  background-color: rgba(244, 114, 182, 0.14);
 }
 
 .skill-block {
@@ -347,6 +360,9 @@ header {
   border-radius: 20px;
   background: var(--block-bg);
   border: 1px solid var(--block-border);
+}
+
+.skill-block h3 {
   margin: 0 0 10px;
   font-size: 1rem;
   color: var(--text);
@@ -368,16 +384,19 @@ ul.clean-list li {
 
 footer {
   margin-top: 40px;
-  padding: 20px 16px;
+  padding: 22px 24px;
   text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   color: var(--text-muted);
   font-size: 0.95rem;
 }
 
-.highlight {
-  color: var(--accent);
-}
-
+footer span {
+  color: var(--text);
+  font-weight: 700;
 @media (max-width: 520px) {
   header {
     padding: 24px 18px;
